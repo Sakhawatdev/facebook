@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <title>Facebook</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #ffffff;
+        color: #050505;
+      }
+
+      /* Main Container */
+      .container {
+        width: 420px;
+        margin: 18px auto 0;
+      }
+
+      /* Back Button */
+      .back {
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 5px;
+      }
+
+      .back span {
+        font-size: 27px;
+        font-weight: 300;
+        color: #65676b;
+      }
+
+      /* Meta */
+      .meta {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        margin-bottom: 8px;
+      }
+
+      .meta-icon {
+        color: #0866ff;
+        font-size: 17px;
+        font-weight: bold;
+      }
+
+      .meta-text {
+        font-size: 14px;
+        color: #1c1e21;
+      }
+
+      /* Heading */
+      h1 {
+        font-size: 20px;
+        line-height: 24px;
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+
+      .intro {
+        font-size: 13px;
+        line-height: 16px;
+        margin-bottom: 12px;
+      }
+
+      /* Labels */
+      .label {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        font-size: 14px;
+        font-weight: 600;
+
+        margin-bottom: 5px;
+      }
+
+      .info {
+        width: 15px;
+        height: 15px;
+
+        border: 1.5px solid #1c1e21;
+        border-radius: 50%;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        font-size: 10px;
+        font-weight: bold;
+      }
+
+      /* Input Row */
+      .row {
+        display: flex;
+        gap: 9px;
+      }
+
+      /* Input */
+      input,
+      select {
+        width: 100%;
+        height: 46px;
+
+        border: 1px solid #ccd0d5;
+        border-radius: 12px;
+
+        padding: 0 13px;
+
+        font-size: 12px;
+        color: #1c1e21;
+
+        outline: none;
+        background: white;
+      }
+
+      input::placeholder {
+        color: #65676b;
+      }
+
+      input:focus,
+      select:focus {
+        border-color: #0866ff;
+      }
+
+      .row input {
+        width: 50%;
+      }
+
+      /* Section */
+      .section {
+        margin-top: 18px;
+      }
+
+      /* Select Box */
+      .select-box {
+        position: relative;
+        width: 100%;
+      }
+
+      .select-box select {
+        appearance: none;
+        -webkit-appearance: none;
+        cursor: pointer;
+        color: #65676b;
+      }
+
+      .select-box::after {
+        content: "";
+        position: absolute;
+
+        right: 16px;
+        top: 16px;
+
+        width: 8px;
+        height: 8px;
+
+        border-right: 2px solid #111;
+        border-bottom: 2px solid #111;
+
+        transform: rotate(45deg);
+        pointer-events: none;
+      }
+
+      /* Birthday */
+      .birthday {
+        display: flex;
+        gap: 12px;
+      }
+
+      .birthday .select-box {
+        width: 33.33%;
+      }
+
+      /* Contact Info */
+      .contact-note {
+        font-size: 12px;
+        line-height: 15px;
+
+        margin-top: 7px;
+        margin-bottom: 0;
+      }
+
+      .contact-note a {
+        color: #0866ff;
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      /* Password */
+      .password {
+        margin-top: 10px;
+      }
+
+      /* Terms */
+      .terms {
+        margin-top: 22px;
+      }
+
+      .terms p {
+        font-size: 12px;
+        line-height: 15px;
+        margin-bottom: 8px;
+      }
+
+      .terms a {
+        color: #0866ff;
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      /* Submit Button */
+      .submit-btn {
+        width: 100%;
+        height: 34px;
+
+        border: none;
+        border-radius: 18px;
+
+        background: #0866ff;
+        color: white;
+
+        font-size: 12px;
+        font-weight: 600;
+
+        cursor: pointer;
+
+        margin-top: 7px;
+      }
+
+      .submit-btn:hover {
+        background: #075bdc;
+      }
+
+      /* Login Button */
+      .login-btn {
+        width: 100%;
+        height: 33px;
+
+        border: none;
+        border-radius: 18px;
+
+        background: #f0f2f5;
+        color: #1c1e21;
+
+        font-size: 12px;
+
+        cursor: pointer;
+
+        margin-top: 9px;
+        margin-bottom: 18px;
+      }
+
+      .login-btn:hover {
+        background: #e4e6eb;
+      }
+
+      /* Mobile */
+      @media (max-width: 500px) {
+        .container {
+          width: calc(100% - 32px);
+          margin-top: 15px;
+        }
+
+        h1 {
+          font-size: 20px;
+        }
+
+        .row {
+          gap: 8px;
+        }
+
+        .birthday {
+          gap: 8px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Back -->
+      <div class="back">
+        <span>‹</span>
+      </div>
+
+      <!-- Meta -->
+      <div class="meta">
+        <span class="meta-icon">∞</span>
+        <span class="meta-text">Meta</span>
+      </div>
+
+      <!-- Heading -->
+      <h1>Get started on Facebook with a Meta account</h1>
+
+      <p class="intro">
+        A Meta Account lets you access multiple Meta technologies, such as
+        Facebook, easily and securely.
+      </p>
+
+      <!-- Name -->
+      <div class="label">Name</div>
+
+      <div class="row">
+        <input type="text" placeholder="First name" />
+
+        <input type="text" placeholder="Surname" />
+      </div>
+
+      <!-- Date of Birth -->
+      <div class="section">
+        <div class="label">
+          Date of birth
+
+          <span class="info">?</span>
+        </div>
+
+        <div class="birthday">
+          <div class="select-box">
+            <select>
+              <option selected disabled>Day</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
+              <option>11</option>
+              <option>12</option>
+              <option>13</option>
+              <option>14</option>
+              <option>15</option>
+              <option>16</option>
+              <option>17</option>
+              <option>18</option>
+              <option>19</option>
+              <option>20</option>
+              <option>21</option>
+              <option>22</option>
+              <option>23</option>
+              <option>24</option>
+              <option>25</option>
+              <option>26</option>
+              <option>27</option>
+              <option>28</option>
+              <option>29</option>
+              <option>30</option>
+              <option>31</option>
+            </select>
+          </div>
+
+          <div class="select-box">
+            <select>
+              <option selected disabled>Month</option>
+              <option>January</option>
+              <option>February</option>
+              <option>March</option>
+              <option>April</option>
+              <option>May</option>
+              <option>June</option>
+              <option>July</option>
+              <option>August</option>
+              <option>September</option>
+              <option>October</option>
+              <option>November</option>
+              <option>December</option>
+            </select>
+          </div>
+
+          <div class="select-box">
+            <select>
+              <option selected disabled>Year</option>
+              <option>2026</option>
+              <option>2025</option>
+              <option>2024</option>
+              <option>2023</option>
+              <option>2022</option>
+              <option>2021</option>
+              <option>2020</option>
+              <option>2019</option>
+              <option>2018</option>
+              <option>2017</option>
+              <option>2016</option>
+              <option>2015</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gender -->
+      <div class="section">
+        <div class="label">
+          Gender
+
+          <span class="info">?</span>
+        </div>
+
+        <div class="select-box">
+          <select>
+            <option selected disabled>Select your gender</option>
+
+            <option>Female</option>
+            <option>Male</option>
+            <option>Custom</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Mobile / Email -->
+      <div class="section">
+        <div class="label">Mobile number or email address</div>
+
+        <input type="text" placeholder="Mobile number or email address" />
+
+        <p class="contact-note">
+          You may receive notifications from us.
+          <a href="#">Learn why we ask for your contact information</a>
+        </p>
+      </div>
+
+      <!-- Password -->
+      <div class="password">
+        <div class="label">Password</div>
+
+        <input type="password" placeholder="Password" />
+      </div>
+
+      <!-- Terms -->
+      <div class="terms">
+        <p>
+          People who use our service may have uploaded your contact information
+          to Facebook.
+          <a href="#">Learn more.</a>
+        </p>
+
+        <p>
+          By tapping Submit, you agree to create an account and to Facebook's
+          <a href="#">Terms</a>, <a href="#">Privacy Policy</a> and
+          <a href="#">Cookies Policy.</a>
+        </p>
+
+        <p>
+          The <a href="#">Privacy Policy</a> describes the ways we can use the
+          information we collect when you create an account. For example, we use
+          this information to provide, personalise and improve our products,
+          including ads.
+        </p>
+      </div>
+
+      <!-- Submit -->
+      <button class="submit-btn">Submit</button>
+
+      <!-- Login -->
+      <button class="login-btn">I already have an account</button>
+    </div>
+  </body>
+</html>
